@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Finding Services</title>
+</head>
+<body>
+    <h1>Root Finding Services</h1>
+    <form method="POST">
+        <!-- Function Input -->
+        <label for="input1">Enter Function (in terms of x):</label>
+        <input type="text" id="input1" name="input1" placeholder="e.g. x**2 - 4" required><br><br>
+
+        <!-- Float Inputs -->
+        <label for="input2">Input 2 (e.g. interval start or initial guess):</label>
+        <input type="number" id="input2" name="input2" step="any" required><br><br>
+
+        <label for="input3">Input 3 (e.g. interval end or another parameter):</label>
+        <input type="number" id="input3" name="input3" step="any" required><br><br>
+
+        <!-- Radio buttons for method selection -->
+        <label>Choose a method:</label><br>
+        <input type="radio" id="radio0" name="radio" value="0" required>
+        <label for="radio0">Bisection Method</label><br>
+
+        <input type="radio" id="radio1" name="radio" value="1">
+        <label for="radio1">Fixed Point Iteration</label><br>
+
+        <input type="radio" id="radio2" name="radio" value="2">
+        <label for="radio2">Newton's Method</label><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if answered %}
+        <h2>Result</h2>
+        <p><strong>Method Chosen:</strong> 
+            {% if radio_choice == '0' %}Bisection Method
+            {% elif radio_choice == '1' %}Fixed Point Iteration
+            {% elif radio_choice == '2' %}Newton's Method
+            {% endif %}
+        </p>
+        <p><strong>Result:</strong> {{ result }}</p>
+    {% endif %}
+</body>
+</html>
